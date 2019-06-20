@@ -13,7 +13,7 @@ class Form extends Component {
       passwordValid: false,
       formValid: false
     }
-    this.createPost= this.createPost.bind(this);
+    // this.createPost= this.createPost.bind(this);
   }
 
   handleUserInput = (e) => {
@@ -23,7 +23,7 @@ class Form extends Component {
       () => { this.validateField(name, value) });
   }
 
-  validateField(fieldName, value) {
+  validateField = (fieldName, value) => {
     let fieldValidationErrors = this.state.formErrors;
     let emailValid = this.state.emailValid;
     let passwordValid = this.state.passwordValid;
@@ -50,7 +50,7 @@ class Form extends Component {
     );
   }
 
-  validateForm() {
+  validateForm = () => {
     this.setState(
       {
         formValid: this.state.emailValid && this.state.passwordValid
@@ -58,11 +58,11 @@ class Form extends Component {
     );
   }
 
-  errorClass(error) {
+  errorClass = (error) => {
     return(error.length === 0 ? '' : 'has-error');
   }
 
-  createPost(e) {
+  createPost = (e) => {
     e.preventDefault();
     const data = {
       email: this.state.email,
